@@ -384,7 +384,7 @@ function write_num_f2(r, aval, sign) {
 	return sign + (aval === 0 ? "" : ""+aval) + fill(" ", r[1].length + 2 + r[4].length);
 }
 var dec1 = /^#*0*\.([0#]+)/;
-var closeparen = /\).*[0#]/;
+var closeparen = /\)[^)\r\n\u2028\u2029]*[0#]/;
 var phone = /\(###\) ###\\?-####/;
 function hashq(str) {
 	var o = "", cc;
