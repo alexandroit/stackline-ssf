@@ -1,0 +1,11 @@
+{
+  "name": "ssf",
+  "version": "0.11.2",
+  "repository": "git://github.com/SheetJS/ssf.git",
+  "gitHead": "b00ee9b286e58e0e066b498da47ceca41790a306",
+  "tarball": "https://registry.npmjs.org/ssf/-/ssf-0.11.2.tgz",
+  "integrity": "sha512-+idbmIXoYET47hH+d7dfm2epdOMUDjqcB4648sTZ+t2JwoyBFL/insLfB/racrDmsKB3diwsDA696pZMieAC5g==",
+  "baselineCommit": "fe620af524849ae307d0eb027e7b3c8fe2a9e2f2",
+  "license": "Apache-2.0",
+  "checkedAt": "2026-09-27"
+}

@@ -1,3 +1,43 @@
+# @stackline/ssf
+
+Independently maintained Apache-2.0 fork of `ssf@0.11.2`. Original implementation, attribution and license are retained; this is not an official SheetJS release. The precise published source, git commit and SHA-512 integrity are recorded in [UPSTREAM.json](UPSTREAM.json).
+
+```sh
+npm install @stackline/ssf
+```
+
+```js
+const library = require("@stackline/ssf");
+```
+
+## Changes in 1.0.0
+
+- Treat a dot in a date format as a literal separator unless followed by fractional-second zeros (upstream issues #96 and #97). Numeric decimals and ss.000 keep their original behavior.
+- Remove the unused frac runtime dependency: the exact released source already contains the fraction algorithm and does not import frac or any runtime package.
+- Keep ssf.js and ssf.flow.js aligned, retain the upstream formatting corpus, and use node:test without the obsolete development dependency tree.
+
+## Development and verification
+
+Use Node.js 18 or newer for development (verified locally with Node 24). Run `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`, and `npm run test:package`.
+
+`lint` is a JavaScript syntax check, not a claim of a full style/security analysis. All packages have no runtime npm dependencies. `npm audit` reports registry advisories only; absence of findings is not proof that all format parsing is safe.
+
+1,438 passing tests, including the original formatting corpus; one existing upstream Thai-format test remains skipped.
+
+Sources reviewed on 2026-09-27:
+
+- https://github.com/SheetJS/ssf/issues/96
+- https://github.com/SheetJS/ssf/issues/97
+- https://git.sheetjs.com/sheetjs/sheetjs/issues
+
+Publication is performed by the repository GitHub workflow; do not publish from a local checkout. This fork does not modify or publish `@stackline/xlsx`.
+
+## Original upstream documentation
+
+The following retained documentation describes the original library and may use its original package name. For this fork install and import the scoped package shown above.
+
+---
+
 # [SheetJS SSF](http://sheetjs.com)
 
 ssf (SpreadSheet Format) is a pure JS library to format data using ECMA-376

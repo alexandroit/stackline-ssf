@@ -3,7 +3,7 @@
 /*jshint -W041 */
 var SSF = ({});
 var make_ssf = function make_ssf(SSF){
-SSF.version = '0.11.2';
+SSF.version = '1.0.0';
 function _strrev(x) { var o = "", i = x.length-1; while(i>=0) o += x.charAt(i--); return o; }
 function fill(c,l) { var o = ""; while(o.length < l) o+=c; return o; }
 function pad0(v,d){var t=""+v; return t.length>=d?t:fill('0',d-t.length)+t;}
@@ -733,6 +733,7 @@ function eval_fmt(fmt, v, opts, flen) {
 			/* Numbers */
 			case '.':
 				if(dt != null) {
+					if(fmt.charAt(i+1) !== '0') { out[out.length] = {t:'t', v:'.'}; ++i; break; }
 					o = c; while(++i < fmt.length && (c=fmt.charAt(i)) === "0") o += c;
 					out[out.length] = {t:'s', v:o}; break;
 				}
