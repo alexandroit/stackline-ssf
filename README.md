@@ -1,6 +1,21 @@
 # @stackline/ssf
 
-Independently maintained Apache-2.0 fork of `ssf@0.11.2`. Original implementation, attribution and license are retained; this is not an official SheetJS release. The precise published source, git commit and SHA-512 integrity are recorded in [UPSTREAM.json](UPSTREAM.json).
+> Format spreadsheet values with ECMA-376 number and date format codes and the SheetJS SSF API.
+
+[![npm version](https://img.shields.io/npm/v/@stackline/ssf.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/ssf)
+[![license](https://img.shields.io/npm/l/@stackline/ssf.svg?style=flat-square)](https://github.com/alexandroit/stackline-ssf/blob/main/LICENSE)
+[![GitHub repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-ssf)
+
+**[Documentation](https://github.com/alexandroit/stackline-ssf#readme)** |
+**[npm](https://www.npmjs.com/package/@stackline/ssf)** |
+**[Issues](https://github.com/alexandroit/stackline-ssf/issues)** |
+**[Repository](https://github.com/alexandroit/stackline-ssf)**
+
+**Package version:** `1.0.1`
+
+## Why this package?
+
+Independently maintained Apache-2.0 fork of `ssf@0.11.2`. Original implementation, attribution and license are retained; this is not an official SheetJS release. The precise published source, git commit and SHA-512 integrity are recorded in [UPSTREAM.json](https://github.com/alexandroit/stackline-ssf/blob/main/UPSTREAM.json).
 
 ```sh
 npm install @stackline/ssf
@@ -10,35 +25,11 @@ npm install @stackline/ssf
 const library = require("@stackline/ssf");
 ```
 
-## Changes in 1.0.0
+### Changes in 1.0.0
 
 - Treat a dot in a date format as a literal separator unless followed by fractional-second zeros (upstream issues #96 and #97). Numeric decimals and ss.000 keep their original behavior.
 - Remove the unused frac runtime dependency: the exact released source already contains the fraction algorithm and does not import frac or any runtime package.
 - Keep ssf.js and ssf.flow.js aligned, retain the upstream formatting corpus, and use node:test without the obsolete development dependency tree.
-
-## Development and verification
-
-Use Node.js 18 or newer for development (verified locally with Node 24). Run `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`, and `npm run test:package`.
-
-`lint` is a JavaScript syntax check, not a claim of a full style/security analysis. All packages have no runtime npm dependencies. `npm audit` reports registry advisories only; absence of findings is not proof that all format parsing is safe.
-
-1,438 passing tests, including the original formatting corpus; one existing upstream Thai-format test remains skipped.
-
-Sources reviewed on 2026-09-27:
-
-- https://github.com/SheetJS/ssf/issues/96
-- https://github.com/SheetJS/ssf/issues/97
-- https://git.sheetjs.com/sheetjs/sheetjs/issues
-
-Publication is performed by the repository GitHub workflow; do not publish from a local checkout. This fork does not modify or publish `@stackline/xlsx`.
-
-## Original upstream documentation
-
-The following retained documentation describes the original library and may use its original package name. For this fork install and import the scoped package shown above.
-
----
-
-# [SheetJS SSF](http://sheetjs.com)
 
 ssf (SpreadSheet Format) is a pure JS library to format data using ECMA-376
 spreadsheet format codes (used in popular spreadsheet software packages).
@@ -46,12 +37,26 @@ spreadsheet format codes (used in popular spreadsheet software packages).
 This is the community version.  We also offer a pro version with additional
 features like international support as well as dedicated support.
 
+## Compatibility
+
+| Item | Value |
+| --- | --- |
+| Package | `@stackline/ssf@1.0.1` |
+| Supported Node.js | `>=0.8` |
+| Module entry | `./ssf` (CommonJS) |
+| Runtime dependencies | 0 direct dependencies |
+| Types | `types` |
+
 ## Installation
 
-With [npm](https://www.npmjs.org/package/ssf):
+```bash
+npm install @stackline/ssf
+```
+
+With [npm](https://www.npmjs.com/package/@stackline/ssf):
 
 ```bash
-$ npm install ssf
+$ npm install @stackline/ssf
 ```
 
 In the browser:
@@ -69,6 +74,11 @@ The script will manipulate `module.exports` if available .  This is not always
 desirable.  To prevent the behavior, define `DO_NOT_EXPORT_SSF`.
 
 ## Usage
+
+```js
+const SSF = require('@stackline/ssf');
+console.log(SSF.format('0.00', 12.3)); // 12.30
+```
 
 `SSF.format(fmt, val, opts)` formats `val` using the format `fmt`.
 
@@ -123,37 +133,84 @@ type SSFDate = {
 
 `SSF.is_date(fmt:string):boolean` returns `true` if `fmt` encodes a date format.
 
-## Examples
+### Examples
 
 - [Basic Demo](http://oss.sheetjs.com/ssf/)
 - [Custom Formats Builder](https://customformats.com)
 
-## Related Packages
+## Features
+
+### Related Packages
 
 [`ssf-cli`](https://www.npmjs.com/package/ssf-cli) is a simple NodeJS command
 line tool for formatting numbers.
 
+## Security
+
+The parenthesis matcher is bounded to avoid quadratic backtracking on repeated closing parentheses. Date-format dot handling and numeric decimal behavior retain their documented distinctions.
+
+## API Surface
+
+### References
+
+- `ECMA-376`: Office Open XML File Formats
+ - `MS-XLS`: Excel Binary File Format (.xls) Structure Specification
+ - `MS-XLSB`: Excel (.xlsb) Binary File Format
+
+## Local Development
+
+Clone the [repository](https://github.com/alexandroit/stackline-ssf) and run the following commands from its root:
+
+```bash
+npm ci
+npm run build
+npm test
+npm run lint
+```
+
+The retained upstream development notes below include historical tooling; the commands above are the maintained package checks.
+
+### Development and verification
+
+Use Node.js 18 or newer for development (verified locally with Node 24). Run `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`, and `npm run test:package`.
+
+`lint` is a JavaScript syntax check, not a claim of a full style/security analysis. All packages have no runtime npm dependencies. `npm audit` reports registry advisories only; absence of findings is not proof that all format parsing is safe.
+
+1,438 passing tests, including the original formatting corpus; one existing upstream Thai-format test remains skipped.
+
+Sources reviewed on 2026-09-27:
+
+- https://github.com/SheetJS/ssf/issues/96
+- https://github.com/SheetJS/ssf/issues/97
+- https://git.sheetjs.com/sheetjs/sheetjs/issues
+
+Publication is performed by the repository GitHub workflow; do not publish from a local checkout. This fork does not modify or publish `@stackline/xlsx`.
+
+## Consumer Smoke Test
+
+`npm run test:package` packs the library and exercises an isolated consumer using the repository fixture.
+
+## Release Checklist
+
+1. Update the package version, lockfile, generated version fields, and changelog together.
+2. Run the development checks above and audit both `npm audit` and `npm audit --omit=dev`.
+3. Use the [GitHub publish workflow](https://github.com/alexandroit/stackline-ssf/actions/workflows/publish.yml) with its `Prod` environment to publish the exact CI tarball.
+4. Verify public npm bytes, package identity, provenance, and the immutable GitHub release evidence.
+
+## Community and Support
+
+Report reproducible package issues in the [issue tracker](https://github.com/alexandroit/stackline-ssf/issues).
+
+- [Stackline / Alexandro.Net](https://alexandro.net/)
+- [GitHub](https://github.com/alexandroit)
+- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
+- [Reddit community: r/Stackline](https://www.reddit.com/r/Stackline/)
+
 ## License
+
+[Apache-2.0](https://github.com/alexandroit/stackline-ssf/blob/main/LICENSE). Original copyright notices and upstream attribution are retained.
 
 Please consult the attached LICENSE file for details.  All rights not explicitly
 granted by the Apache 2.0 license are reserved by the Original Author.
 
-## References
-
- - `ECMA-376`: Office Open XML File Formats
- - `MS-XLS`: Excel Binary File Format (.xls) Structure Specification
- - `MS-XLSB`: Excel (.xlsb) Binary File Format
-
-## Badges
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/ssfjs.svg)](https://saucelabs.com/u/ssfjs)
-
-[![Build Status](https://travis-ci.org/SheetJS/ssf.svg?branch=master)](https://travis-ci.org/SheetJS/ssf)
-
-[![Coverage Status](http://img.shields.io/coveralls/SheetJS/ssf/master.svg)](https://coveralls.io/r/SheetJS/ssf?branch=master)
-
-[![NPM Downloads](https://img.shields.io/npm/dt/ssf.svg)](https://npmjs.org/package/ssf)
-
-[![Dependencies Status](https://david-dm.org/sheetjs/ssf/status.svg)](https://david-dm.org/sheetjs/ssf)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-36810333-1/SheetJS/ssf?pixel)](https://github.com/SheetJS/ssf)
+See [NOTICE](https://github.com/alexandroit/stackline-ssf/blob/main/NOTICE) for retained attribution.
