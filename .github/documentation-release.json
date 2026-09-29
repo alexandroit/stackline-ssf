@@ -1,0 +1,26 @@
+{
+  "repository": "alexandroit/stackline-ssf",
+  "packages": [
+    {
+      "name": "@stackline/ssf",
+      "path": "README.md",
+      "version": "1.0.1",
+      "baselineVersion": "1.0.0",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "ssf",
+        "typescript",
+        "nodejs",
+        "format",
+        "sprintf",
+        "spreadsheet"
+      ],
+      "homepage": "https://alexandro.net/docs/vanilla/ssf/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/ssf/-/ssf-1.0.0.tgz",
+      "baselineIntegrity": "sha512-8ybVxMXXbkYQ5KgmgIATAU2LZLH/uL8IFHRyzCK7qmf1yCuqxx5OHyzO4iZwZWz+PN/vISQdw6oOk2UsPYlqJw==",
+      "expectedSha512": "a09490538f82ead7ac36d9291fff3bed13c31ef219128e496b55d3d51a88c15d03240b5ad713fa2983ed016e6820567ce707a618cd0647376051b20ef4bd1d43",
+      "tag": "docs-stackline-ssf-v1.0.1"
+    }
+  ]
+}
