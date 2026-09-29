@@ -1,6 +1,6 @@
 {
   "name": "@stackline/ssf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "sheetjs",
   "description": "Format spreadsheet values with ECMA-376 number and date format codes and the SheetJS SSF API",
   "keywords": [
