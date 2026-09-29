@@ -5,15 +5,13 @@
   "description": "Format spreadsheet values with ECMA-376 number and date format codes and the SheetJS SSF API",
   "keywords": [
     "stackline",
+    "npm-package",
+    "ssf",
+    "typescript",
+    "nodejs",
     "format",
     "sprintf",
-    "spreadsheet",
-    "ssf",
-    "excel",
-    "number-format",
-    "date-format",
-    "ecma-376",
-    "formatter"
+    "spreadsheet"
   ],
   "main": "./ssf",
   "types": "types",
@@ -29,7 +27,7 @@
     "build": "node scripts/build.cjs",
     "test:package": "node scripts/package-smoke.cjs"
   },
-  "homepage": "https://github.com/alexandroit/stackline-ssf#readme",
+  "homepage": "https://alexandro.net/docs/vanilla/ssf/",
   "bugs": {
     "url": "https://github.com/alexandroit/stackline-ssf/issues"
   },
